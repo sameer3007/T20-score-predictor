@@ -17,7 +17,7 @@ def load_model():
 model = load_model()
 
 teams = ['Australia','India','Bangladesh','New Zealand','South Africa','England',
-         'West Indies','Afghanistan','Pakistan','Sri Lanka']
+         'West Indies','Pakistan','Sri Lanka']
 
 cities = ['Colombo','Mirpur','Johannesburg','Dubai','Auckland','Cape Town','London',
           'Pallekele','Barbados','Sydney','Melbourne','Durban','St Lucia','Wellington',
@@ -64,4 +64,5 @@ if st.button('Predict Score'):
 
     result = model.predict(input_df)
     st.header("Predicted Score - " + str(int(result[0])))
+
 
