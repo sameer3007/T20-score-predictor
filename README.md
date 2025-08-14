@@ -19,3 +19,4 @@ It uses **XGBoost** as the prediction model and a **Scikit-learn Pipeline** for 
 ├── xgboost_model.pkl # Trained ML pipeline (model + preprocessing)
 ├── requirements.txt # Python dependencies
 └── README.md # Project documentation
+
