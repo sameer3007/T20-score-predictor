@@ -1,9 +1,20 @@
 import joblib
 import pandas as pd
 import streamlit as st
+import requests
 
-# Load trained pipeline (preprocessing + model)
-model = joblib.load("xgboost_model.pkl")
+# Google Drive direct download link
+url = "https://drive.google.com/uc?export=download&id=1VT7nkvx9tiN90aQXSKQSdy0MUCJmW_0f"
+
+# Download the model file
+@st.cache_resource
+def load_model():
+    response = requests.get(url)
+    with open("xgboost_model.pkl", "wb") as f:
+        f.write(response.content)
+    return joblib.load("xgboost_model.pkl")
+
+model = load_model()
 
 teams = ['Australia','India','Bangladesh','New Zealand','South Africa','England',
          'West Indies','Afghanistan','Pakistan','Sri Lanka']
@@ -53,3 +64,4 @@ if st.button('Predict Score'):
 
     result = model.predict(input_df)
     st.header("Predicted Score - " + str(int(result[0])))
+
